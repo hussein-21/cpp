@@ -24,3 +24,9 @@ int main() {
  
    return 0;
 }
+
+/* -------OUTPUT--------
+First name: Amy
+Last name : Smith
+Age: 19
+----------------*/
