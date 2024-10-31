@@ -1,0 +1,111 @@
+///* 
+Trattoria_Reviews.txt with a list of usernames and ratings:
+Trattoria Italian Bistro
+
+sunny8trophy
+4
+
+Angelcopter
+2
+
+Mogoodid24
+5
+
+Elixirnoel8626
+5
+
+gobbledygook
+1
+
+Friderday912
+3
+******/
+
+
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main() {
+    ifstream inFS; // Input file stream to read from a file
+    string restaurantName; // Variable to store the name of the restaurant
+    string userName; // Variable to store the name of each user
+    int userRating; // Variable to store each user's rating
+    int userRatingSum = 0; // Variable to hold the sum of all user ratings
+    int userRatingCount = 0; // Counter to track the number of ratings read
+
+    // Open file
+    inFS.open("Trattoria_Reviews.txt"); // Attempt to open the file "Trattoria_Reviews.txt"
+    
+    // Check if the file was successfully opened
+    if (!inFS.is_open()) {
+        cout << "Could not open file Trattoria_Reviews.txt." << endl;
+        return 1; // Return 1 to indicate an error in opening the file
+    }
+
+    // Read and display the restaurant's name (assumed to be on the first line of the file)
+    getline(inFS, restaurantName); // Read the restaurant name from the file
+    cout << endl << restaurantName << endl; // Display the restaurant name
+    cout << "--------------------" << endl; // Separator line for output formatting
+    
+    // Loop to read all user reviews from the file
+    while (!inFS.eof()) { // Continue looping until the end of the file is reached
+        inFS >> userName; // Read the user's name
+        inFS >> userRating; // Read the user's rating
+        
+        if (!inFS.fail()) { // Check if reading was successful
+            // Display user's name and rating
+            cout << "User name: " << userName << endl;
+            cout << "   Rating: " << userRating << endl;
+            cout << endl;
+            
+            // Add the current user's rating to the sum of all ratings
+            userRatingSum += userRating;
+            
+            // Increment the number of ratings read
+            userRatingCount++;
+        }
+    }
+    
+    // Display the restaurant's average rating
+    cout << "--------------------" << endl; // Separator line for output formatting
+    cout << "Average rating: ";
+    // Calculate and display the average rating as a double
+    cout << (static_cast<double>(userRatingSum) / userRatingCount) << endl; /// Purpose: static_cast<double> is used to convert userRatingSum from an int to a double so that the division operation produces a more precise result. //////
+    
+    // Close the file when done reading
+    inFS.close(); // Close the file to free resources
+
+    return 0; // Return 0 to indicate successful program execution
+}
+
+
+
+/******* 
+      output:
+Trattoria Italian Bistro
+--------------------
+User name: sunny8trophy
+   Rating: 4
+
+User name: Angelcopter
+   Rating: 2
+
+User name: Mogoodid24
+   Rating: 5
+
+User name: Elixirnoel8626
+   Rating: 5
+
+User name: gobbledygook
+   Rating: 1
+
+User name: Friderday912
+   Rating: 3
+
+--------------------
+Average rating: 3.33333
+
+
+*********/
