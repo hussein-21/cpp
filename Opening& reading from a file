@@ -1,0 +1,46 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+   ifstream inFS;     // Input file stream
+   int fileNum1;      // Data value from file
+   int fileNum2;      // Data value from file
+
+   // Try to open file
+   cout << "Opening file numFile.txt." << endl;
+
+   inFS.open("numFile.txt");
+   if (!inFS.is_open()) {
+      cout << "Could not open file numFile.txt." << endl;
+      return 1; // 1 indicates error
+   }
+
+   // Can now use inFS stream like cin stream
+   // numFile.txt should contain two integers, else problems
+   cout << "Reading two integers." << endl;
+   inFS >> fileNum1;
+   inFS >> fileNum2;
+   cout << "Closing file numFile.txt." << endl;
+   inFS.close(); // Done with file, so close it
+
+   // Output values read from file
+   cout << "num1: " << fileNum1 << endl;
+   cout << "num2: " << fileNum2 << endl;
+   cout << "num1 + num2: " << (fileNum1 + fileNum2) << endl;
+
+   return 0;
+}
+
+/*
+  1. #include <fstream> (short for "file stream") enables use of the ifstream class.
+  2. A new stream variable, ifstream inFS, is declared. ifstream is short for input file stream, and is derived from istream.
+  3. inFS.open("numFile.txt"); opens the file for reading and associates the file with the inFS stream.
+  4. If the open fails, either because the file does not exist or is in use by another program, the program outputs an error message, and exits.
+  5. A successfully opened input stream can be used like the cin stream. inFS >> fileNum1; reads an integer into fileNum1.
+  6. When done using the stream, the program closes the file using inFS.close().
+*/
+
+
+
+
