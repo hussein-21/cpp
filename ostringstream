@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+using namespace std;
+
+int main() {
+   ostringstream infoOSS;    // Output string stream
+   string infoStr;           // Information string
+   string firstName;         // First name
+   string lastName;          // Last name
+   int userAge;              // Age
+   
+   // Prompt user for input
+   cout << "Enter \"firstname lastname age\": " << endl;
+   cin >> firstName;
+   cin >> lastName;
+   cin >> userAge;
+   
+   // Write user input to string stream
+   infoOSS << lastName << ", " << firstName;
+   infoOSS << " " << userAge;
+   
+   // Appends (minor) to string stream if less than 21
+   if (userAge < 21) {
+      infoOSS << " (minor)";
+   }
+   
+   // Extract string stream buffer as a single string
+   infoStr = infoOSS.str();
+
+   cout << "Information: " << infoStr << endl;
+   
+   return 0;
+}
+
+
+////* output
+Enter "firstname lastname age":
+Mary Jones 19
+information: Jones, Mary 19 (minor)
+*/////////
+
+
+program information:
+1.The sstream library defines the ostringstream class, which is in namespace std.
+2.ostringstream infoOSS; declares a new output string stream variable. The stream's buffer is initially empty.
+3.After reading input from the keyboard, the program inserts data into infoOSS's buffer using <<, similar to inserting data into the cout stream.
+4.The string " (minor)" is also inserted into the string stream buffer because the user entered an age < 21.
+5.The str() function returns the stream's buffer data as a single string, which is then output to the screen.
+
