@@ -1,0 +1,64 @@
+/* A program can read varying amounts of data in a file by using a loop that reads until the end of the file has been reached. The eof() function returns true if the previous stream operation reached the end of the file.
+
+Errors may be encountered while attempting to read from a file, like the inability to read the file, reading corrupt data, etc. So, a program should check that each read was successful before using the variable to which the read data was assigned. The fail() function returns true if the previous stream operation had an error.
+*/
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+   ifstream inFS;   // Input file stream
+   int fileNum;     // File data
+
+   // Open file
+   cout << "Opening file myfile.txt." << endl;
+   inFS.open("myfile.txt");
+
+   if (!inFS.is_open()) {
+      cout << "Could not open file myfile.txt." << endl;
+      return 1;
+   }
+
+   // Print read numbers to output
+   cout << "Reading and printing numbers." << endl;
+
+   inFS >> fileNum;
+   while (!inFS.fail()) {
+      cout << "num: " << fileNum << endl;
+      inFS >> fileNum;
+   }
+   if (!inFS.eof()) {
+      cout << "Input failure before reaching end of file." << endl;
+   }
+
+   cout << "Closing file myfile.txt." << endl;
+
+   // Done with file, so close it
+   inFS.close();
+
+   return 0;
+}
+
+
+
+/////******
+myfile.txt with variable number of integers:
+111
+222
+333
+444
+555
+*********/
+
+///////****** output:
+Opening file myfile.txt.
+Reading and printing numbers.
+num: 111
+num: 222
+num: 333
+num: 444
+num: 555
+Closing file myfile.txt.
+**********//////////
+
