@@ -1,0 +1,59 @@
+/////*
+wordFile.txt with a list of words:
+twenty
+associable
+twenty
+unredacted
+associable
+folksay
+twenty
+*****/
+
+
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main() {
+    ifstream inFS; // Input file stream to read from a file
+    string userWord; // The word entered by the user to search for
+    int wordFreq = 0; // Counter to track the frequency of the userWord
+    string currWord; // Variable to hold each word read from the file
+
+    // Open file
+    cout << "Opening file wordFile.txt." << endl;
+    inFS.open("wordFile.txt"); // Attempt to open the file named "wordFile.txt"
+    
+    // Check if the file was successfully opened
+    if (!inFS.is_open()) {
+        cout << "Could not open file wordFile.txt." << endl;
+        return 1; // Return 1 to indicate an error in opening the file
+    }
+    
+    // Prompt the user to enter the word to search for
+    cout << "Enter a word: ";
+    cin >> userWord; // Read the user's input and store it in userWord
+    
+    // Loop through each word in the file
+    while (inFS >> currWord) { // Read words from the file one at a time into currWord
+        if (currWord == userWord) { // If the current word matches userWord
+            ++wordFreq; // Increment the word frequency counter
+        }
+    }
+    
+    // Output the frequency of the userWord in the file
+    cout << userWord << " appears in the file " 
+         << wordFreq << " times." << endl;
+    
+    // Done with the file, so close it
+    inFS.close(); // Close the file to free resources
+    
+    return 0; // Return 0 to indicate successful program execution
+}
+
+/*    output
+Opening file wordFile.txt.
+Enter a word: twenty
+twenty appears in the file 3 times.
+*/
