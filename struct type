@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+struct Birthday {
+   int month;
+   int day;
+};
+
+int main() {
+   Birthday pamBirthday;
+   Birthday joeBirthday;
+   Birthday annBirthday;
+
+   pamBirthday.month = 3;
+   pamBirthday.day = 16;
+   joeBirthday.month = 5;
+   joeBirthday.day = 22;
+   annBirthday = pamBirthday;
+   annBirthday.month = 6;
+
+   cout << "Ann: " << annBirthday.month << "/" << annBirthday.day << endl;
+
+   return 0;
+}
