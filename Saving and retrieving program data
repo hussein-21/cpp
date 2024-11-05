@@ -1,0 +1,63 @@
+////// Saving and retrieving program data
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+using namespace std;
+
+// Function to read reviews from "reviews.txt" and store them in a vector
+void ReadReviews(vector<string> &reviewList) {
+   ifstream reviewsFS; // Create an input file stream object
+   string review; // String to store each line of the review
+
+   reviewsFS.open("reviews.txt"); // Open the file "reviews.txt"
+
+   // Check if the file opened successfully
+   if (!reviewsFS.is_open()) {
+      cout << "Could not open file reviews.txt." << endl; // Print an error message if file can't be opened
+   }
+   else {
+      getline(reviewsFS, review); // Read the first line from the file
+      // Loop until the end of the file
+      while (!reviewsFS.fail()) {
+         reviewList.push_back(review); // Add the review to the vector
+         getline(reviewsFS, review); // Read the next line from the file
+      }
+
+      reviewsFS.close(); // Close the file after reading all lines
+   }
+}
+
+// Function to display all the reviews stored in the vector
+void DisplayReviews(const vector<string> &reviewList) {
+   cout << endl << "Reviews:" << endl; // Print a header for the reviews
+   // Loop through the vector and display each review with a numbered list
+   for (int i = 0; i < reviewList.size(); i++) {
+      cout << i + 1 << ". " << reviewList.at(i) << endl; // Print each review with a number
+   }
+   cout << endl; // Print an extra newline for better formatting
+}
+
+int main() {
+   vector<string> reviewList; // Vector to store all reviews
+   string newReview; // String to store a new review entered by the user
+
+   // Read reviews from the file into the vector and display them
+   ReadReviews(reviewList);
+   DisplayReviews(reviewList);
+   
+   cout << "Enter new review or QUIT:" << endl; // Prompt the user to enter a new review or "QUIT"
+   getline(cin, newReview); // Read the user's input (supports spaces)
+
+   // Loop to get new reviews from the user until they enter "QUIT"
+   while (newReview != "QUIT") {
+      reviewList.push_back(newReview); // Add the new review to the vector
+      DisplayReviews(reviewList); // Display the updated list of reviews
+
+      cout << "Enter new review or QUIT:" << endl; // Prompt the user again
+      getline(cin, newReview); // Read the user's input
+   }
+
+   return 0; // End the program
+}
