@@ -1,0 +1,34 @@
+#include <iostream> // Include the iostream library for input and output
+using namespace std; // Use the standard namespace to avoid prefixing std::
+
+// Define a structure named FruitStand to store the number of plums and peaches
+struct FruitStand {
+   int numPlums;   // Variable to store the number of plums
+   int numPeaches; // Variable to store the number of peaches
+};
+
+// Function to print the total number of plums and peaches from two fruit stands
+void PrintTotalFruits(FruitStand stand1, FruitStand stand2) {
+   // Calculate the total number of plums and print the result
+   cout << (stand1.numPlums + stand2.numPlums) << " Plums" << endl;
+   // Calculate the total number of peaches and print the result
+   cout << (stand1.numPeaches + stand2.numPeaches) << " Peaches" << endl;
+}
+
+int main() {
+   FruitStand fruitStand1; // Create an instance of FruitStand named fruitStand1
+   FruitStand fruitStand2; // Create an instance of FruitStand named fruitStand2
+
+   // Assign values to the numPlums and numPeaches variables for fruitStand1
+   fruitStand1.numPlums = 2;    // fruitStand1 has 2 plums
+   fruitStand1.numPeaches = 5;  // fruitStand1 has 5 peaches
+
+   // Assign values to the numPlums and numPeaches variables for fruitStand2
+   fruitStand2.numPlums = 7;    // fruitStand2 has 7 plums
+   fruitStand2.numPeaches = 10; // fruitStand2 has 10 peaches
+
+   // Call the PrintTotalFruits function to print the total number of fruits
+   PrintTotalFruits(fruitStand1, fruitStand2);
+
+   return 0; // Return 0 to indicate successful program execution
+}
