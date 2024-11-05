@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+double CalculateAverage(double scoreVals[], int numVals) {
+   int index;
+   double scoreSum = 0.0;
+   
+   for (index = 0; index < numVals; ++index) {
+      scoreSum = scoreSum + scoreVals[index];
+   }
+   
+   return scoreSum / numVals;
+}
+
+int main() {
+   const int NUM_SCORES = 4;    // Array size
+   double testScores[NUM_SCORES];  // User test scores
+   int index;
+   double averageScore;
+   
+   // Prompt user to enter test scores
+   cout << "Enter " << NUM_SCORES << " test scores:" << endl;
+   for (index = 0; index < NUM_SCORES; ++index) {
+      cout << "Test score: ";
+      cin >> testScores[index];
+   }
+   cout << endl;
+   
+   // Call function to calculate average
+   averageScore = CalculateAverage(testScores, NUM_SCORES);
+   cout << "Average test score: " 
+        << averageScore << endl;
+   
+   return 0;
+}
