@@ -1,0 +1,40 @@
+//// with instructions ///////
+#include <iostream> // Include the iostream library for input and output
+using namespace std; // Use the standard namespace to avoid prefixing std::
+
+// Define a structure named TimeHrMin to store hours and minutes
+struct TimeHrMin {
+   int hourValue;   // Variable to store the hour value
+   int minuteValue; // Variable to store the minute value
+};
+
+// Function to convert total minutes into hours and minutes
+TimeHrMin ConvHrMin(int totalTime) {
+   TimeHrMin timeStruct; // Create an instance of the TimeHrMin structure
+
+   // Calculate the number of hours from total minutes
+   timeStruct.hourValue  = totalTime / 60;
+   // Calculate the remaining minutes after converting to hours
+   timeStruct.minuteValue = totalTime % 60;
+
+   return timeStruct; // Return the populated TimeHrMin structure
+}
+
+int main() {
+   int inTime;             // Variable to store input time in minutes
+   TimeHrMin travelTime;   // Variable to store converted hours and minutes
+
+   // Prompt the user to enter total minutes
+   cout << "Enter total minutes: ";
+   cin >> inTime; // Read the input from the user
+
+   // Call the ConvHrMin function to convert the input time
+   travelTime = ConvHrMin(inTime);
+
+   // Output the converted hours and minutes
+   cout << "Equals: ";
+   cout << travelTime.hourValue << " hrs ";   // Output the hour value
+   cout << travelTime.minuteValue << " mins"; // Output the minute value
+
+   return 0; // Return 0 to indicate successful program execution
+}
