@@ -1,0 +1,37 @@
+#include <iostream> // Includes the standard input/output stream library
+#include <fstream> // Includes the file stream library for file operations
+#include <string> // Includes the string library for handling string objects
+
+using namespace std; // Allows usage of standard namespace without prefixing 'std::'
+
+int main() {
+    string sourceFileName; // Variable to store the name/path of the source file
+    string destinationFileName = "Alsaidi.txt"; // Name of the destination file. Replace "Alsaidi" with your last name if needed
+
+    cout << "Enter the path of the source .txt file: "; // Prompts the user to enter the source file path
+    getline(cin, sourceFileName); // Reads the entire line of input and stores it in sourceFileName
+
+    ifstream inFile(sourceFileName); // Opens the source file for reading
+    if (!inFile.is_open()) { // Checks if the source file could not be opened
+        cout << "Error: Could not open the source file." << endl; // Prints an error message if the file can't be opened
+        return 1; // Exits the program with a status code of 1 indicating failure
+    }
+
+    ofstream outFile(destinationFileName); // Opens/creates the destination file for writing
+    if (!outFile.is_open()) { // Checks if the destination file could not be created/opened
+        cout << "Error: Could not create the destination file." << endl; // Prints an error message if the file can't be created/opened
+        return 1; // Exits the program with a status code of 1 indicating failure
+    }
+
+    string line; // Variable to hold each line of the file being read
+    while (getline(inFile, line)) { // Reads each line from the source file until the end
+        outFile << line << endl; // Writes each line to the destination file followed by a newline
+    }
+
+    cout << "File copied successfully to " << destinationFileName << endl; // Prints success message with the destination file name
+
+    inFile.close(); // Closes the source file
+    outFile.close(); // Closes the destination file
+
+    return 0; // Exits the program with a status code of 0 indicating success
+}
