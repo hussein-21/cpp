@@ -1,0 +1,46 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+int main() {
+   // Source: The World Bank, 2022
+   vector<string> ctryNames; // Country names
+   vector<int> ctryGDPs; // Country annual GDPs (trillions)
+   string userCountry; // User-entered country
+   bool foundCountry = false; // Country-match flag
+   unsigned int i; // Loop index
+
+   ctryNames.push_back("UK");   // Add country "UK" to the list
+   ctryGDPs.push_back(3);        // Add GDP value for "UK"
+
+   ctryNames.push_back("India"); // Add country "India" to the list
+   ctryGDPs.push_back(3);         // Add GDP value for "India"
+
+   ctryNames.push_back("Canada"); // Add country "Canada" to the list
+   ctryGDPs.push_back(2);          // Add GDP value for "Canada"
+
+   ctryNames.push_back("Italy"); // Add country "Italy" to the list
+   ctryGDPs.push_back(2);         // Add GDP value for "Italy"
+
+   ctryNames.push_back("Japan"); // Add country "Japan" to the list
+   ctryGDPs.push_back(4);         // Add GDP value for "Japan"
+
+   cout << "Enter case-sensitive country to search for: "; // Prompt user for input
+   cin >> userCountry;                                    // Read user input
+
+   foundCountry = false;                                  // Initialize flag to false
+   for (i = 0; i < ctryNames.size() && !foundCountry; ++i) { // Loop through countries until found
+      if (ctryNames.at(i) == userCountry) {               // Check if current country matches input
+         foundCountry = true;                            // Set flag to true if match found
+         cout << userCountry << " has an annual GDP of ";
+         cout << "$" << ctryGDPs.at(i) << "T." << endl; // Output matching GDP value
+      }
+   }
+
+   if (!foundCountry) {                                   // If no match was found
+      cout << "Country not found; try again." << endl;    // Output error message
+   }
+
+   return 0;                                              // Return 0 to indicate successful execution
+}
