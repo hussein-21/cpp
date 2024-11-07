@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+   const int NUM_ELEMENTS = 8;      // Number of elements to add (constant value)
+   vector<int> userVals;            // Empty vector to store user input values
+   unsigned int i;                  // Loop index variable
+   int val;                         // Variable to store each input value
+   int maxVal;                      // Variable to store the maximum value in the vector
+
+   cout << "Enter " << NUM_ELEMENTS << " integer values..." << endl; // Prompt user to enter values
+   for (i = 0; i < NUM_ELEMENTS; ++i) {  // Loop to get input NUM_ELEMENTS times
+      cout << "Enter value for next element: ";   // Prompt for individual value input
+      cin >> val;                                  // Read user input
+      userVals.push_back(val);                     // Add input value to the vector
+   }
+
+   maxVal = userVals.at(0);                      // Initialize maxVal with the first element of the vector
+   for (i = 0; i < userVals.size(); ++i) {       // Loop through the vector to find the maximum value
+      if (userVals.at(i) > maxVal) {             // Check if the current element is greater than maxVal
+         maxVal = userVals.at(i);                // Update maxVal if current element is greater
+      }
+   }
+   cout << "Max of elements: " << maxVal << endl; // Output the maximum value
+
+   return 0;                                      // Return 0 to indicate successful program execution
+}
