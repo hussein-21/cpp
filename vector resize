@@ -69,3 +69,83 @@ int main() {
 
    return 0;
 }
+
+
+
+///////
+Given the double vector myValues, the input integer listSize, and the input double firstNum, resize myValues to listSize. Then, assign the elements of myValues with doubles firstNum + 1.5 * i, where i is the index of each element in the vector.
+
+Ex: If the input is 6 9.5, then the output is:
+
+9.5 11.0 12.5 14.0 15.5 17.0 
+
+#include <iostream>
+#include <vector>
+#include <iomanip>
+using namespace std;
+
+int main() {
+   vector<double> myValues;
+   int numVals;
+   unsigned int i;
+   int listSize;
+   double firstNum;
+
+   cin >> listSize;
+   cin >> firstNum;
+
+    myValues.resize(listSize);
+   for(i=0; i< myValues.size() ; ++i){
+   
+      myValues.resize(listSize);
+      myValues.at(i) = firstNum +1.5* i;
+   }
+
+   for (i = 0; i < myValues.size(); ++i) {
+      cout << fixed << setprecision(1) << myValues.at(i) << " ";
+   }
+   cout << endl;
+
+   return 0;
+}
+
+
+/////////////
+Given the double vector valElements with two elements, the input integer numElements, and the input double begNum, resize valElements to numElements. Then, assign the new elements of valElements with begNum * (i + 1), where i is the index of each new element in the vector.
+
+Ex: If the input is 6 8.5, then the output is:
+
+37.5 45.5 25.5 34.0 42.5 51.0 
+
+
+
+#include <iostream>
+#include <vector>
+#include <iomanip>
+using namespace std;
+
+int main() {
+   unsigned int i;
+   int initValues = 2;
+   vector<double> valElements(initValues);
+   int numElements;
+   double begNum;
+   
+   valElements.at(0) = 37.5;
+	valElements.at(1) = 45.5;
+   
+   cin >> numElements;
+   cin >> begNum;
+
+   valElements.resize(numElements);
+   for(i=initValues;i<valElements.size(); ++i){
+      valElements.at(i) = begNum*(i+1);
+   }
+
+   for (i = 0; i < valElements.size(); ++i) {
+      cout << fixed << setprecision(1) << valElements.at(i) << " ";
+   }
+   cout << endl;
+
+   return 0;
+}
