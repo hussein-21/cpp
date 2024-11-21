@@ -26,3 +26,46 @@ int main() {
    
    return 0;
 }
+
+
+
+/////// resize vector elements example 2
+
+
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+   vector<int> myList(7);
+   int myListSize = myList.size();
+   int numRemoved;
+   int i;
+   
+   myList.at(0) = 13;
+	myList.at(1) = 15;
+	myList.at(2) = 9;
+	myList.at(3) = 14;
+	myList.at(4) = 12;
+	myList.at(5) = 11;
+	myList.at(6) = 10;
+   
+   cin >> numRemoved;
+   
+   cout << "Start ";
+	for (i = 0; i < myList.size(); ++i) {
+      cout << myList.at(i) << " ";
+   }
+	cout << "End" << endl;
+
+   myList.resize(myList.size() - numRemoved);
+
+   cout << "Start ";
+	for (i = 0; i < myList.size(); ++i) {
+      cout << myList.at(i) << " ";
+   }
+	cout << "End" << endl;
+
+   return 0;
+}
