@@ -1,0 +1,130 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+   vector<string> inputStrings;
+   string value;
+
+   // Input strings until "end" is entered
+   while (cin >> value && value != "end") {
+      inputStrings.push_back(value);
+   }
+
+   // Print all stored strings
+   for (const string& str : inputStrings) {
+      cout << str << endl;
+   }
+
+   return 0;
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+   vector<int> dataVect;
+   int value;
+
+   // Read integers until -1 is encountered
+   cin >> value;
+   while (value != -1) {
+      dataVect.push_back(value - 3); // Add value minus 3 to the vector
+      cin >> value; // Read the next integer
+   }
+
+   // Output each element of the vector
+   for (int i = 0; i < dataVect.size(); ++i) {
+      cout << dataVect[i] << endl;
+   }
+
+   return 0;
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+   vector<int> numberVector;
+   int value;
+   int i;
+
+   cin >> value;
+   while (value != 0) {
+      numberVector.push_back(value);
+      cin >> value;
+   }
+   int sum;
+   int lastE = numberVector.back();
+   for( i=0; i<numberVector.size(); ++i){
+      sum = numberVector.at(i) + lastE;
+      cout << sum << endl;
+   }
+
+   return 0;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+REVERSE ORDER OUPTUT FOR ++ INTS ONLY 
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+   vector<int> intVect;
+   int value;
+   int i;
+
+   cin >> value;
+   while (value != -1) {
+      intVect.push_back(value);
+      cin >> value;
+   }
+      for(i=intVect.size() -1; i>=0 ; --i){
+         if( intVect.at(i) >= 0){
+             cout << intVect.at(i) << endl;
+         }
+   }
+        
+            
+
+   return 0;
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+   vector<int> numberVect;
+   int value;
+   int i;
+
+   cin >> value;
+   while (value != 0) {
+      numberVect.push_back(value);
+      cin >> value;
+   }
+   int lastE = numberVect.back();
+   for(i=0;i<numberVect.size(); ++i){
+      if(numberVect.at(i) > lastE){
+         cout<< "MISSED"<<endl;
+      }
+      else{
+         cout << numberVect.at(i) << endl;
+   }
+   }
+
+   return 0;
+}
+
+
+
