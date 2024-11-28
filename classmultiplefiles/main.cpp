@@ -16,3 +16,19 @@ int main() {
    return 0;
 }
 
+
+////////////////IO///////////////
+
+
+Input:
+
+MyStore
+10 Apples
+5 Bananas
+0
+   
+Output:
+
+MyStore's sale:
+Apples: 8
+Bananas: 3
