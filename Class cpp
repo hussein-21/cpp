@@ -1,0 +1,473 @@
+//// intro example /////////////////////////
+int main() {
+   Restaurant favLunchPlace;
+   Restaurant favDinnerPlace;
+
+   favLunchPlace.SetName("Central Deli");
+   favLunchPlace.SetRating(4);
+
+   favDinnerPlace.SetName("Friends Cafe");
+   favDinnerPlace.SetRating(5);
+
+   cout << "My favorite restaurants: " << endl;
+   favLunchPlace.Print();
+   favDinnerPlace.Print();
+
+   return 0;
+}
+
+
+
+
+
+
+/////// PUBLIC PRIVATE /////////////////////////////
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Class definition for Restaurant
+class Restaurant {                          
+   public:                                  
+      void SetName(string restaurantName);  // Sets the restaurant's name
+      void SetRating(int userRating);       // Sets the rating (1-5, with 5 being the best)
+      void Print();                         // Prints the restaurant's name and rating
+   
+   private:                                
+      string name;                          // Variable to store the restaurant's name
+      int rating;                           // Variable to store the restaurant's rating
+};
+
+// Definition of the SetName method
+void Restaurant::SetName(string restaurantName) {
+   name = restaurantName;                   // Assigns the provided name to the private variable 'name'
+}
+
+// Definition of the SetRating method
+void Restaurant::SetRating(int userRating) {
+   rating = userRating;                     // Assigns the provided rating to the private variable 'rating'
+}
+
+// Definition of the Print method
+void Restaurant::Print() {
+   // Outputs the restaurant's name and rating in the format: name -- rating
+   cout << name << " -- " << rating << endl;
+}
+
+int main() {
+   Restaurant favLunchPlace;                // Creates an instance of the Restaurant class for a lunch place
+   Restaurant favDinnerPlace;               // Creates another instance for a dinner place
+   
+   favLunchPlace.SetName("Central Deli");   // Sets the name of the lunch place
+   favLunchPlace.SetRating(4);              // Sets the rating of the lunch place to 4
+   
+   favDinnerPlace.SetName("Friends Cafe");  // Sets the name of the dinner place
+   favDinnerPlace.SetRating(5);             // Sets the rating of the dinner place to 5
+   
+   cout << "My favorite restaurants: " << endl; // Prints the header for the restaurant list
+   favLunchPlace.Print();                  // Prints details of the lunch place
+   favDinnerPlace.Print();                 // Prints details of the dinner place
+   
+   return 0;                                // Ends the program
+}
+
+
+
+
+
+
+
+
+
+
+///////////// RUNNER INFO CALC /////////////////////////////
+#include <iostream>
+using namespace std;
+
+class RunnerInfo {
+   public:                                
+      void SetTime(int timeRunSecs);       // Sets the time run in seconds
+      void SetDist(double distRunMiles);  // Sets the distance run in miles
+      double GetSpeedMph();               // Calculates and returns speed in miles/hour
+
+   private:                                // Private data members
+      int timeRun;                        // Time run in seconds
+      double distRun;                     // Distance run in miles
+};
+
+// Definition of SetTime method
+void RunnerInfo::SetTime(int timeRunSecs) {
+   timeRun = timeRunSecs;                  // Assigns the input to the private member timeRun
+}
+
+// Definition of SetDist method
+void RunnerInfo::SetDist(double distRunMiles) {
+   distRun = distRunMiles;                 // Assigns the input to the private member distRun
+}
+
+// Definition of GetSpeedMph method
+double RunnerInfo::GetSpeedMph() {
+   return distRun / (timeRun / 3600.0);    // Calculates speed as miles / (seconds / (3600 seconds/hour))
+}
+
+int main() {
+   RunnerInfo runner1;                     // User-created object of class type RunnerInfo
+   RunnerInfo runner2;                     // A second object
+
+   runner1.SetTime(360);                   // Sets the time for runner1
+   runner1.SetDist(1.2);                   // Sets the distance for runner1
+
+   runner2.SetTime(200);                   // Sets the time for runner2
+   runner2.SetDist(0.5);                   // Sets the distance for runner2
+
+   cout << "Runner1's speed in MPH: " << runner1.GetSpeedMph() << endl; // Calls GetSpeedMph for runner1
+   cout << "Runner2's speed in MPH: " << runner2.GetSpeedMph() << endl; // Calls GetSpeedMph for runner2
+
+   return 0;                               // Ends the program
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////// BUSINESS CLASS ////////////////////////////
+
+#include <iostream>
+using namespace std;
+
+class Business {
+   public:
+      int GetNumStock();
+		  int GetYearsOpen();
+      int GetNumEmployees();
+      void SetNumStock(int numStock);
+      void SetYearsOpen(int yearsOpen);
+      void SetNumEmployees(int numEmployees);
+   private:
+      int numStock;
+      int yearsOpen;
+      int numEmployees;
+};
+
+void Business::SetNumStock(int newNumStock) {
+   numStock = newNumStock;
+}
+
+void Business::SetYearsOpen(int newYearsOpen) {
+	yearsOpen = newYearsOpen;
+}
+
+void Business::SetNumEmployees(int newNumEmployees) {   
+   numEmployees = newNumEmployees;
+}
+
+int Business::GetNumStock() {
+   return numStock;
+}
+
+int Business::GetYearsOpen() {
+	return yearsOpen;
+}
+
+int Business::GetNumEmployees() {
+   return numEmployees;
+}
+
+int main() {
+   Business business1;
+   int userNumStock;
+	int userYearsOpen;
+   int userNumEmployees;
+
+   cin >> userNumStock;
+	cin >> userYearsOpen;
+   cin >> userNumEmployees;
+
+   business1.SetNumStock(userNumStock);
+	business1.SetYearsOpen(userYearsOpen);
+   business1.SetNumEmployees(userNumEmployees);
+   
+   cout << "Items in stock: " << business1.GetNumStock() << endl;
+	cout << "Years open: " << business1.GetYearsOpen() << endl;
+   cout << "Number of employees: " << business1.GetNumEmployees() << endl;
+
+   return 0;
+}
+
+
+
+
+
+
+
+/////////////// inline member ////////////////////////
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Restaurant {                          // Info about a restaurant
+   public:
+      void SetName(string restaurantName) { // Sets the restaurant's name
+         name = restaurantName;
+      }
+      void SetRating(int userRating) {      // Sets the rating (1-5, with 5 best)
+         rating = userRating;
+      }
+      void Print();                         // Prints name and rating on one line
+   
+   private:
+      string name;
+      int rating;
+};
+
+// Prints name and rating on one line
+void Restaurant::Print() {
+   cout << name << " -- " << rating << endl;
+}
+
+int main() {
+   Restaurant favLunchPlace;
+   Restaurant favDinnerPlace;
+   
+   favLunchPlace.SetName("Central Deli");
+   favLunchPlace.SetRating(4);
+   
+   favDinnerPlace.SetName("Friends Cafe");
+   favDinnerPlace.SetRating(5);
+   
+   cout << "My favorite restaurants: " << endl;
+   favLunchPlace.Print();
+   favDinnerPlace.Print();
+   
+   return 0;
+}
+
+
+
+
+
+
+
+
+///////////////// INLINE ALL IN PUBLIC /////////////////
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class State {
+   public:
+      void SetCapital(string stateCapital) {
+         capital = stateCapital;
+      }
+      void SetName(string stateName) {
+         name = stateName;
+      }
+      void Print() const {
+         cout << capital << " - " << name << endl;   
+      }
+
+   private:
+      string capital;
+      string name;
+};
+
+
+int main() {
+   State myState;
+
+   myState.SetCapital("Olympia");
+   myState.SetName("Washington");
+
+   myState.Print();
+
+   return 0;
+}
+
+
+
+
+
+////////////////////  Mutator and accessor public member functions (SETTERS AND GETTERS) /////////////////////
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Restaurant {
+   public:
+      void   SetName(string restaurantName); // Mutator
+      void   SetRating(int userRating);      // Mutator
+      string GetName() const;                // Accessor
+      int    GetRating() const;              // Accessor
+      void   Print() const;                  // Accessor
+
+   private:
+      string name;
+      int rating;
+};
+
+void Restaurant::SetName(string restaurantName) {
+   name = restaurantName;
+}
+
+void Restaurant::SetRating(int userRating) {
+   rating = userRating;
+}
+
+string Restaurant::GetName() const {
+   return name;
+}
+
+int Restaurant::GetRating() const {
+   return rating;
+}
+
+void Restaurant::Print() const {
+   cout << name << " -- " << rating << endl;
+}
+
+int main() {
+   Restaurant myPlace;
+
+   myPlace.SetName("Maria's Diner");
+   myPlace.SetRating(5);
+
+   cout << myPlace.GetName() << " is rated ";
+   cout << myPlace.GetRating() << endl;
+
+   return 0;
+}
+
+
+
+
+
+
+
+
+
+
+////////////////////// LOOP WITHIN GETTER ///////////////////////////////
+
+
+
+
+#include <iostream>
+using namespace std;
+
+class Dog {
+   public:
+      void SetAge(int monthsToSet);
+      string GetStage() const;
+   private:
+      int months;
+};
+
+void Dog::SetAge(int monthsToSet) {
+   months = monthsToSet;
+}
+
+string Dog::GetStage() const {
+   string stage;
+   if (months < 7) {
+      stage = "Puppy";
+   }
+   else if (months < 19) {
+      stage = "Adolescence";
+   }
+   else if (months < 60) {
+      stage = "Adulthood";
+   }
+   else {
+      stage = "Senior";
+   }
+    
+   return stage;
+}
+
+int main() {
+   Dog buddy;
+
+   buddy.SetAge(18);
+
+   cout << buddy.GetStage();
+   return 0;
+}
+
+
+////////////////////////// Voicemail ex //////////////////////////////////
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Voicemail {
+   public:
+      void SetGreeting(string voicemailGreeting);  // Sets the voicemail greeting
+      void SetNumber(string voicemailNumber);      // Sets the phone number
+      void Print() const;                          // Prints the voicemail greeting and phone number
+   
+   private:
+      string greeting;  // Stores the voicemail greeting
+      string number;    // Stores the phone number
+};
+
+// Definition of SetGreeting() mutator
+void Voicemail::SetGreeting(string voicemailGreeting) {
+   greeting = "Hello, this is " + voicemailGreeting;  // Prefixes the input with "Hello, this is "
+}
+
+// Definition of SetNumber() mutator
+void Voicemail::SetNumber(string voicemailNumber) {
+   number = voicemailNumber;  // Sets the phone number
+}
+
+// Definition of Print() method
+void Voicemail::Print() const {
+   cout << "Voicemail: " << greeting << endl;  // Outputs the greeting
+   cout << "Phone Number: " << number << endl; // Outputs the phone number
+}
+
+int main() {
+   Voicemail voicemail;  // Create an instance of Voicemail
+   string inputGreeting; // Input for the greeting
+   string inputNumber;   // Input for the phone number
+
+   getline(cin, inputGreeting); // Read the greeting input
+   getline(cin, inputNumber);   // Read the phone number input
+
+   voicemail.SetGreeting(inputGreeting); // Set the greeting
+   voicemail.SetNumber(inputNumber);     // Set the phone number
+
+   voicemail.Print(); // Print the voicemail information
+
+   return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
