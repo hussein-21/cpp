@@ -21,3 +21,14 @@ int main() {
 
    return 0;
 }
+
+
+
+///////////OUTPUT///////////////
+HEAD COACH: 
+Full name: Mark Miwerds
+Age (years): 42
+
+ASSISTANT COACH: 
+Full name: Stanley Lee
+Age (years): 30
