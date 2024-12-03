@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -10,9 +9,24 @@ void PlayersAdd(vector<int>& players, int playerNum) {
 
 void PlayersPrint(const vector<int>& players) {
    unsigned int i;
-
+   
    for (i = 0; i < players.size(); ++i) {
       cout << " " << players.at(i) << endl;
+   }
+}
+
+// Deletes playerNum from vector
+void PlayersDelete(vector<int>& players, int playerNum) {
+   unsigned int i = 0;
+   bool found = false;
+   
+   // Search for playerNum in vector
+   while (!found && (i < players.size())) {
+      if (players.at(i) == playerNum) {
+         players.erase(players.begin() + i); // Delete
+         found = true;
+      }
+      ++i;
    }
 }
 
@@ -21,10 +35,10 @@ int main() {
    vector<int> players;
    int playerNum;
    char userKey;
-
+   
    userKey = '?';
-
-   cout << "Commands: 'a' add, 'p' print" << endl;
+   
+   cout << "Commands: 'a' add, 'p' print, 'd' del" << endl;
    cout << "   'q' quits" << endl;
    while (userKey != 'q') {
       cout << "Command: ";
@@ -37,32 +51,41 @@ int main() {
       else if (userKey == 'p') {
          PlayersPrint(players);
       }
+      else if (userKey == 'd') {
+         cout << " Player number: ";
+         cin  >> playerNum;
+         PlayersDelete(players, playerNum);
+      }
    }
-
+   
    return 0;
 }
-
 
 
 /////////////////OUTPUT////////////////////
 
 
-Commands: 'a' add, 'p' print
+Commands: 'a' add, 'p' print, 'd' del
    'q' quits
-Command: p
 Command: a
  Player number: 23
 Command: a
  Player number: 47
-Command: p
- 23
- 47
 Command: a
  Player number: 19
 Command: p
  23
  47
  19
+Command: d
+ Player number: 23
+Command: p
+ 47
+ 19
+Command: d
+ Player number: 19
+Command: p
+ 47
 Command: q
 
 
